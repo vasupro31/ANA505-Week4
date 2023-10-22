@@ -1,0 +1,13 @@
+install.packages("dplyr")
+library(dplyr) 
+df <- data.frame(Titanic)
+x <- top_n(df,10)
+y = select(.data = df, Survived, Sex)
+y1 = select(.data = y, Survived, !(Sex))
+colnames(df)[colnames(df) == "Sex"] = 'Gender'
+y2 = filter(df, Gender == 'Male')
+y3= arrange(.data = df, Gender)
+sum(x[,'Freq'], na.rm = TRUE)
+y4 = filter(df, Gender == 'Female')
+y5 = union(y2,y4)
+y6 = union_all(y2,y4)
